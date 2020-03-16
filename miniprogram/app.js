@@ -1,5 +1,5 @@
 //app.js
-import { loginStorage } from './utils/util';
+import { loginStorage, setUserInfo } from './utils/util';
 App({
   onLaunch() {
     if (!wx.cloud) {
@@ -16,6 +16,13 @@ App({
       });
 
       loginStorage('user');
+      // setUserInfo('user', {
+      //   nickName: 'forget',
+      //   gender: 1,
+      //   language: 'zh_CN',
+      //   city: 'Xuzhou',
+      //   province: 'Jiangsu'
+      // });
     }
 
     this.globalData = {};
