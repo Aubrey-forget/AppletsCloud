@@ -1,0 +1,56 @@
+/* components/getUserInfo/index.wxss */
+.pop-ups {
+  background-color: #fff;
+  border-radius: 8rpx;
+  overflow: hidden;
+  width: 600rpx;
+}
+
+.pop-ups .box {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  color: #007aff;
+  box-sizing: border-box;
+}
+
+.pop-ups .box .avatar {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 20rpx;
+}
+
+.pop-ups .operate {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 80rpx;
+  border-top: 1rpx solid rgba(0, 0, 0, 0.5);
+}
+
+.pop-ups .operate .btn {
+  width: 50%;
+  font-size: 30rpx;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pop-ups .operate .last {
+  position: relative;
+  font-weight: normal;
+  padding: 0;
+}
+
+.pop-ups .operate .last::before {
+  width: 1px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: "";
+}

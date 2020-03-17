@@ -1,0 +1,12 @@
+<view class="container"
+      wx:if="{{realShowPopBox}}"
+      style="background-color: {{maskBgColor}}">
+    <view class="wrapper {{position}}"
+          style="animation-name: {{animationName}}; animation-duration: {{duration}}ms"
+          catchtap="tapMask">
+        <view class="content"
+              catchtap="stopPropagation">
+            <slot></slot>
+        </view>
+    </view>
+</view>

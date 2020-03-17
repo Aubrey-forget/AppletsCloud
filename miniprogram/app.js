@@ -1,5 +1,5 @@
 //app.js
-import { loginStorage, setUserInfo } from './utils/util';
+import { loginStorage } from './utils/util';
 App({
   onLaunch() {
     if (!wx.cloud) {
@@ -14,15 +14,7 @@ App({
         env: 'test-hfg2f',
         traceUser: true
       });
-
       loginStorage('user');
-      // setUserInfo('user', {
-      //   nickName: 'forget',
-      //   gender: 1,
-      //   language: 'zh_CN',
-      //   city: 'Xuzhou',
-      //   province: 'Jiangsu'
-      // });
     }
 
     this.globalData = {};

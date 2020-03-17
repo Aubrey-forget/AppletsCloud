@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "popUps": "/components/popBox/popBox"
+  }
+}

@@ -1,0 +1,18 @@
+<!--components/getUserInfo/index.wxml-->
+<popUps showPopBox="{{ show }}">
+    <view class="pop-ups">
+        <view class="box">
+            <open-data class="avatar"
+                       type="userAvatarUrl"></open-data>
+            <view>立即登录，体验更多功能</view>
+        </view>
+
+        <view class="operate">
+            <view class="btn"
+                  catch:tap="_close">取消</view>
+            <button class="btn last"
+                    open-type="getUserInfo"
+                    bindgetuserinfo="_getUserInfo">确认</button>
+        </view>
+    </view>
+</popUps>
