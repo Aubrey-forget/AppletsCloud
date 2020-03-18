@@ -1,0 +1,64 @@
+.feedback {
+  padding: 0 20rpx;
+}
+
+.feedback .haeder {
+  font-size: 50rpx;
+  color: #999;
+  height: 240rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 10rpx;
+}
+
+.feedback .title {
+  border-bottom: 1px solid #999;
+  position: relative;
+}
+
+.feedback .title .sub {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: #999;
+  font-size: 30rpx;
+}
+
+.feedback .title input {
+  padding: 10rpx 0;
+  color: #333;
+}
+
+.feedback .content {
+  border: 1px solid #999;
+  margin-top: 20rpx;
+  position: relative;
+}
+
+.feedback .content textarea {
+  padding: 16rpx;
+  width: 100%;
+  box-sizing: border-box;
+  color: #333;
+}
+
+.feedback .content .cont-sub {
+  position: absolute;
+  right: 8rpx;
+  bottom: 2rpx;
+  color: #999;
+  font-size: 30rpx;
+}
+
+.feedback .btn {
+  width: 80%;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx 0;
+  margin: 100rpx auto 0;
+  background-color: rgba(0, 123, 255,0.8);
+  color: #fff;
+}

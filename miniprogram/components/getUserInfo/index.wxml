@@ -1,5 +1,6 @@
 <!--components/getUserInfo/index.wxml-->
-<popUps showPopBox="{{ show }}">
+<popUps showPopBox="{{ show }}"
+        catch:closePopBox="changeStatus">
     <view class="pop-ups">
         <view class="box">
             <open-data class="avatar"

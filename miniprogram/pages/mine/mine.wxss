@@ -1,0 +1,72 @@
+/* miniprogram/pages/mine/mine.wxss */
+page {
+  background-color: #f3f3f3;
+}
+
+.mine {}
+
+.mine .header {
+  background-color: #007aff;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 20rpx 40rpx;
+  padding-bottom: 50rpx;
+}
+
+.mine .header .avatar {
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+  margin-right: 30rpx;
+  flex-shrink: 0;
+}
+
+.mine .header .nick-name {
+  line-height: 1.5;
+  letter-spacing: 2rpx;
+}
+
+.mine .header .login {
+  letter-spacing: 10rpx;
+  font-size: 40rpx;
+}
+
+.mine .tab-bar {
+  width: 100%;
+  background-color: #fff;
+  margin-top: 20rpx;
+}
+
+.mine .tab-bar .item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  padding-right: 20rpx;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.tab-bar .item:last-child {
+  border-bottom: none;
+}
+
+.tab-bar .item .name {
+  font-weight: normal;
+  text-align: left;
+  padding: 0;
+  width: auto;
+  min-height: auto;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx;
+  font-size: 32rpx;
+}
+
+.tab-bar .item .arrow {
+  width: 40rpx;
+  height: 40rpx;
+}

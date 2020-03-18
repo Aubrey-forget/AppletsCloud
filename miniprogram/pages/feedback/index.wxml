@@ -1,0 +1,19 @@
+<!--miniprogram/pages/feedback/index.wxml-->
+<view class="feedback">
+    <view class="haeder">感谢您宝贵的意见</view>
+    <view class="title">
+        <input value="{{title}}"
+               placeholder="反馈的标题"
+               maxlength="18"
+               bindinput="getTitle" />
+        <text class="sub">{{title.length}}/18</text>
+    </view>
+    <view class="content">
+        <textarea value="{{content}}"
+                  bindinput="getContent"
+                  maxlength="140"
+                  placeholder="请输入您反馈的内容或修改意见" />
+        <text class="cont-sub">{{ content.length }}/140</text>
+        </view>
+        <view class="btn" bind:tap="clkSubmit">提交</view>
+</view>

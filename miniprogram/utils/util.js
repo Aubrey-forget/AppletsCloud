@@ -2,14 +2,14 @@
  * 获取当前时间戳
  * @returns {Number}
  */
-const getUnix = () => Math.round(+new Date().getTime() / 1000);
+export const getUnix = () => Math.round(+new Date().getTime() / 1000);
 /**
  * 时间戳转化为年 月 日 时 分 秒
  * number: 传入时间戳
  * format：返回格式，支持自定义，但参数必须与formateArr里保持一致
  * 例子：formatDate(需要转换的时间戳, 'M月D日 h:m:s')
  */
-const formatDate = (number, format) => {
+export const formatDate = (number, format) => {
   const formatNumber = num => `${num > 9 ? '' : '0'}${num}`;
   const formateArr = ['Y', 'M', 'D', 'h', 'm', 's', '年', '月', '日'];
   let returnArr = [];
@@ -141,12 +141,8 @@ export const setLog = msg => {
         msg
       }
     })
-    .then(res => {
-      console.log('日志添加成功', res);
-    })
-    .catch(err => {
-      console.log('日志添加失败', err);
-    });
+    .then(() => {})
+    .catch(() => {});
 };
 
 /**
@@ -171,7 +167,10 @@ export const uploadFile = filePath => {
     const db = wx.cloud.database();
     db.collection('cloudStorage')
       .add({
-        data: { fileID: id }
+        data: {
+          fileID: id,
+          createTime: formatDate(getUnix(), 'Y-M-D h:m:s')
+        }
       })
       .then(() => {})
       .catch(err => setLog('图片添加失败：' + err));
@@ -243,7 +242,8 @@ export const download = async pathId => {
               setLog('保存失败：' + err);
               wx.showModal({
                 title: '错误',
-                content: '保存失败，请确保已授权，可到我的授权中查看授权信息'
+                content:
+                  '保存失败，请确保已授权，可到我的-授权设置中查看授权信息'
               });
             }
           });
@@ -254,7 +254,7 @@ export const download = async pathId => {
         console.error('文件下载失败', err);
         wx.showModal({
           title: '提示',
-          content: '文件上传下载：请重新下载'
+          content: '文件下载失败：请重新下载'
         });
       }
     });

@@ -4,7 +4,12 @@ Component({
   /**
    * 组件的属性列表
    */
-  properties: {},
+  properties: {
+    show: {
+      type: Boolean,
+      value: false
+    }
+  },
 
   /**
    * 组件的初始数据
@@ -35,14 +40,22 @@ Component({
   methods: {
     _getUserInfo(e) {
       const { errMsg, userInfo } = e.detail;
-      if (errMsg === 'getUserInfo:ok') setUserInfo('user', userInfo);
-      this._close();
+      if (errMsg === 'getUserInfo:ok') {
+        setUserInfo('user', userInfo);
+        this.isStatus = true;
+      } else {
+        this.isStatus = false;
+      }
+      this.setData({ show: false });
     },
 
     _close() {
-      this.setData({
-        show: false
-      });
+      this.setData({ show: false });
+      this.isStatus = false;
+    },
+
+    changeStatus() {
+      this.triggerEvent('status', { status: this.isStatus }, {});
     }
   }
 });
