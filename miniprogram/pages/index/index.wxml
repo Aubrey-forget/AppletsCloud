@@ -1,2 +1,3 @@
 <view class="container">
+    <rich-text nodes='朋友，你的肚子还好吗<span class="url-icon"><img alt=[微笑] src="//h5.sinaimg.cn/m/emoticon/icon/default/d_hehe-039d0a6a8a.png" style="width:1em; height:1em;" /></span>'></rich-text>
 </view>

@@ -1,1 +1,41 @@
-/* miniprogram/pages/reward/index.wxss */
+page {
+  background-color: #fafafa;
+  padding: 20rpx 50rpx;
+  box-sizing: border-box;
+}
+
+.reward {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.reward image {
+  width: 100%;
+}
+
+.reward .header {
+  position: relative;
+  width: 100%;
+}
+
+.reward .header .bg {
+  width: 100%;
+  vertical-align: middle;
+}
+
+.reward .header .text {
+  position: absolute;
+  bottom: 150rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #e0b741;
+  white-space: nowrap;
+}
+
+.reward .prompt {
+  font-size: 26rpx;
+  color: #dbdbdb;
+  text-align: center;
+  margin: 20rpx 0;
+}

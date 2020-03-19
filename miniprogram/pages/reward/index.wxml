@@ -1,2 +1,14 @@
-<!--miniprogram/pages/reward/index.wxml-->
-<text>miniprogram/pages/reward/index.wxml</text>
+<view class="reward">
+    <view class="header">
+        <image class="bg"
+               src="../../images/reward-code.jpg"
+               mode="widthFix"
+               show-menu-by-longpress="{{ true }}" />
+        <!-- <image class="text"
+               src="../../images/provide.png"
+               mode="widthFix" /> -->
+        <text class="text">感谢您的认可，么么哒。</text>
+    </view>
+    <view class="prompt">温馨提示：请长按保存，进行二维码扫一扫。</view>
+    <!-- <view>您的打赏是我开发的动力</view> -->
+</view>
