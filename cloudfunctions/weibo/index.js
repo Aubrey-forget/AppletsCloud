@@ -5,15 +5,20 @@ cloud.init();
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  var options = {
+  console.log('参数：', event);
+
+  const { id, curr, cookie = '' } = event;
+  const options = {
     uri: 'https://m.weibo.cn/api/container/getIndex',
     qs: {
-      containerid: 102803,
+      containerid: id,
       openApp: 0,
-      since_id: 1
+      since_id: curr
     },
     headers: {
-      'content-type': 'application/json; charset=utf-8'
+      'content-type': 'application/json; charset=utf-8',
+      'set-cookie':
+        'M_WEIBOCN_PARAMS=oid%3D4484188289541876%26luicode%3D10000011%26lfid%3D102803%26uicode%3D10000011%26fid%3D102803; expires=Fri, Max-Age=600; path=/; domain=.weibo.cn; HttpOnly'
     },
     json: true
   };

@@ -24,3 +24,11 @@ button::after{
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
+
+.surl-text {
+  color: #3c6e9e;
+}
+
+a {
+  color: #3c6e9e;
+}

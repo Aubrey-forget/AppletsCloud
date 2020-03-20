@@ -4,3 +4,110 @@ page {
   /* background: #f6f6f6; */
 
 }
+
+.item-box {
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.item-box:first-child {
+  border-top: 1px solid #e6e6e6;
+}
+
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.header .avatar {
+  width: 64rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 14rpx;
+}
+
+.header .avatar image {
+  vertical-align: middle;
+  width: 100%;
+  height: 64rpx;
+}
+
+.header .info-box {
+  font-size: 28rpx;
+}
+
+.header .info-box .time {
+  color: #939393;
+  font-size: 24rpx;
+}
+
+.item-box .content {
+  padding: 20rpx 0;
+}
+
+.content .weibo-cont {
+  color: #333;
+  font-size: 30rpx;
+}
+
+.content .pics {
+  padding: 20rpx 0;
+}
+
+.content .pics image {
+  width: 220rpx;
+  height: 220rpx;
+  margin-left: 4rpx;
+  margin-bottom: 4rpx;
+  vertical-align: middle;
+}
+
+.content .video {
+  width: 100%;
+  padding: 20rpx 0;
+  position: relative;
+}
+
+.content .video .poster {
+  width: 100%;
+  height: 450rpx;
+}
+
+.content .video .play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 108rpx;
+  height: 108rpx;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content .video .play image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+
+.mask-box {
+  position: relative;
+}
+
+.mask-box .mask-video {
+  width: 100vw;
+  height: 100vh;
+}
+
+.mask-box .close {
+  position: absolute;
+  width: 50rpx;
+  height: 50rpx;
+  top: 20rpx;
+  left: 30rpx;
+}

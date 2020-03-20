@@ -1,3 +1,63 @@
-<view class="container">
-    <rich-text nodes='朋友，你的肚子还好吗<span class="url-icon"><img alt=[微笑] src="//h5.sinaimg.cn/m/emoticon/icon/default/d_hehe-039d0a6a8a.png" style="width:1em; height:1em;" /></span>'></rich-text>
+<view class="index">
+    <view wx:for="{{ weiboList }}"
+          wx:for-index="index"
+          class="item-box"
+          wx:key="index">
+        <view class="header">
+            <view class="avatar">
+                <image src="{{ item.mblog.user.profile_image_url }}" />
+            </view>
+            <view class="info-box">
+                <view class="name">{{ item.mblog.user.screen_name }}</view>
+                <view class="time">
+                    <text>{{ item.mblog.created_at }}</text>
+                    <text wx:if="{{ item.mblog.source }}"> 来自 {{ item.mblog.source }}</text>
+                </view>
+            </view>
+        </view>
+
+        <view class="content">
+            <rich-text class="weibo-cont"
+                       nodes="{{ item.mblog.text }}"></rich-text>
+            <!-- 图片 -->
+            <view class="pics"
+                  wx:if="{{ item.mblog.pics }}">
+                <image wx:for="{{ item.mblog.pics }}"
+                       catch:tap="previewPics"
+                       data-index="{{ idx }}"
+                       data-list="{{ item.mblog.pics }}"
+                       mode="top"
+                       wx:key="idx"
+                       wx:for-item="ele"
+                       wx:for-index="idx"
+                       src="{{ ele.url }}" />
+            </view>
+
+            <!-- 视频 -->
+            <view class="video"
+                  wx:if="{{item.mblog.page_info}}">
+                <image class="poster"
+                       src="{{item.mblog.page_info.page_pic.url}}" />
+                <view class="play"
+                      catch:tap="playVideo"
+                      data-url="{{ item.mblog.page_info.media_info.mp4_hd_url }}">
+                    <image src="../../images/play.png" />
+                </view>
+            </view>
+        </view>
+
+    </view>
 </view>
+
+
+
+<!-- 视频控件 -->
+<popUp showPopBox="{{ showVideo }}"
+       class="mask-box">
+    <video class="mask-video"
+           autoplay
+           src="{{ videoUrl }}" />
+    <image catch:tap="closeVideo"
+           class="close"
+           src="../../images/close.png" />
+</popUp>
