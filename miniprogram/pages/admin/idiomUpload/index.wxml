@@ -1,0 +1,30 @@
+<view>
+    <view class="item">
+        <input maxlength="15"
+               placeholder="请输入提示的字"
+               bindinput="idiomLibrary" />
+    </view>
+    <view class="item">
+        <input maxlength="4"
+               placeholder="清输入正确的成语"
+               bindinput="correctIdiom" />
+    </view>
+    <view class="item">
+        <input placeholder="清输入成语释义"
+               bindinput="idiomParaphrase" />
+    </view>
+    <view class="pics">
+        <view class="title">上传图片</view>
+        <view class="photo">
+            <image catch:tap="chooseImage"
+                   src="../../../images/photo.png" />
+        </view>
+        <image class="idiom"
+               wx:if="{{ idiomPics }}"
+               src="{{ idiomPics }}"
+               mode="widthFix" />
+    </view>
+
+    <view catch:tap="upload"
+          class="btn">确定上传</view>
+</view>

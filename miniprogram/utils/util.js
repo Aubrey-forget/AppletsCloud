@@ -65,7 +65,9 @@ export const loginStorage = tableName => {
                     env,
                     appid,
                     userInfo: {},
-                    createTime: getMillisecond()
+                    createTime: getMillisecond(),
+                    gold: 20,
+                    checkpoint: 0
                   }
                 })
                 .then(res => {
@@ -129,6 +131,30 @@ export const setUserInfo = (tableName, userInfo) => {
       },
       fail: err => console.error('[数据库] [查询记录] 失败：', err)
     });
+};
+
+/**
+ * 获取用户信息
+ */
+
+export const getUserInfo = () => {
+  const openid = wx.getStorageSync('openid');
+  // let user;
+  const db = wx.cloud.database();
+
+  return new Promise((resolve, reject) => {
+    db.collection('user')
+      .where({
+        _openid: openid
+      })
+      .get({
+        success: res => {
+          resolve(res.data[0]);
+        }
+      });
+  });
+
+  // return user;
 };
 
 // 存储程序执行出错日志

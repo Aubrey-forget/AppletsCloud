@@ -53,8 +53,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/reward/index",
-					"pathName": "pages/reward/index",
+					"name": "pages/admin/idiomUpload/index",
+					"pathName": "pages/admin/idiomUpload/index",
 					"query": "",
 					"scene": null
 				}

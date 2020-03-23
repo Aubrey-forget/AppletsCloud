@@ -1,0 +1,43 @@
+<view class="container">
+    <image class="bg"
+           src="../../images/game/bg.jpg"
+           mode="aspectFill"></image>
+    <view class="cont flex_col">
+        <view class="content_box">
+            <view class="flex_col flex_space top_label">
+                <view>称号：{{title}}</view>
+                <view>金币：{{gold}}</view>
+                <view>关卡：{{passIndex+1}}</view>
+            </view>
+            <view class="img_box">
+                <image src="{{list[passIndex][0]}}"
+                       mode="aspectFill"></image>
+                <view class="btn flex_col flex_space">
+                    <view class="b1"
+                          catch:tap="useHelp">提 示</view>
+                    <!-- <view class="b2"
+                          catch:tap="share">分 享</view> -->
+                    <button class="b2"
+                            open-type="share">分 享</button>
+                </view>
+            </view>
+            <view class="flex_col flex_space selected_box">
+                <view wx:for="{{selected}}"
+                      class="item {{ isError? 'error':'' }}"
+                      wx:key="index"
+                      data-index="{{index}}"
+                      catch:tap="cancelPicker">{{item.txt}}</view>
+                <view class="reset"
+                      catch:tap="resetPicker">重选</view>
+            </view>
+            <view class="select_box flex_col flex_wrap">
+                <view class="list"
+                      wx:for="{{selectList}}"
+                      wx:key="index">
+                    <view data-index="{{index}}"
+                          catch:tap="picker">{{item}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

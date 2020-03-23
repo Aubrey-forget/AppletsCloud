@@ -1,10 +1,12 @@
 {
   "pages": [
+    "pages/guessTheIdiom/index",
     "pages/index/index",
     "pages/mine/mine",
     "pages/feedback/index",
     "pages/reward/index",
-    "pages/idiom/index"
+    "pages/idiom/index",
+    "pages/admin/idiomUpload/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -24,7 +26,7 @@
       {
         "iconPath": "/images/tabBar/home.png",
         "selectedIconPath": "/images/tabBar/home-a.png",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/guessTheIdiom/index",
         "text": "首页"
       },
       {
