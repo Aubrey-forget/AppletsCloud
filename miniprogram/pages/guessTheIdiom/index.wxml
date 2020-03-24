@@ -10,13 +10,13 @@
                 <view>关卡：{{passIndex+1}}</view>
             </view>
             <view class="img_box">
-                <image src="{{list[passIndex][0]}}"
+                <image src="{{list[0][0]}}"
                        mode="aspectFill"></image>
                 <view class="btn flex_col flex_space">
                     <view class="b1"
                           catch:tap="useHelp">提 示</view>
-                    <!-- <view class="b2"
-                          catch:tap="share">分 享</view> -->
+                    <view class="b1 play-reset"
+                          catch:tap="resetPlay">重 玩</view>
                     <button class="b2"
                             open-type="share">分 享</button>
                 </view>

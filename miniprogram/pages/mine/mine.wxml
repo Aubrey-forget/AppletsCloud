@@ -36,6 +36,15 @@
             <image class="arrow"
                    src="/images/arrow.png" />
         </view>
+
+        <view class="item"
+              wx:if="{{ openid === 'oZyMC0THyd_B2jUp2iU47Kh2gyMw' }}">
+            <navigator hover-class="none"
+                       url="/pages/admin/idiomUpload/index"
+                       class="name">成语上传</navigator>
+            <image class="arrow"
+                   src="/images/arrow.png" />
+        </view>
     </view>
 </view>
 

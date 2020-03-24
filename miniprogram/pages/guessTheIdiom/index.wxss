@@ -71,6 +71,9 @@ page {
   width: 100%;
   height: 100%;
   z-index: 2;
+  align-items: flex-start;
+  padding-top: 30rpx;
+  box-sizing: border-box;
 }
 
 .container .content_box {
@@ -106,7 +109,8 @@ page {
 }
 
 .container .img_box .btn {
-  margin: 20rpx 100rpx 0 100rpx;
+  /* margin: 20rpx 50rpx 0 50rpx; */
+  margin-top: 20rpx;
 }
 
 .img_box .btn view {
@@ -144,6 +148,11 @@ page {
 
 .img_box .btn .b2.active {
   background-color: #faba63;
+}
+
+.img_box .btn .play-reset {
+  margin: 0 40rpx;
+  background-color: #f54e4e;
 }
 
 .container .selected_box {

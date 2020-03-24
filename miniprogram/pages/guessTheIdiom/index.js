@@ -15,35 +15,53 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    const db = wx.cloud.database();
-    db.collection('idiom').get({
-      success: res => {
-        const list = res.data;
-        let data = [];
-        list.forEach(item => {
-          data.push([item.pics, item.library, item.idiom, item.paraphrase]);
+    getUserInfo()
+      .then(res => {
+        this.setData({
+          gold: res.gold,
+          passIndex: res.checkpoint
         });
-        this.setData(
-          {
-            list: data
-          },
-          () => {
-            this.setPassInfo();
-          }
-        );
-      },
-      fail: err => {
-        console.log('---', err);
-      }
-    });
-
-    getUserInfo().then(res => {
-      console.log(res);
-      this.setData({
-        gold: res.gold,
-        passIndex: res.checkpoint
+        return res.checkpoint;
+      })
+      .then(res => {
+        this.getIdiom(res);
       });
-    });
+  },
+
+  // 获取成语
+  getIdiom(curr) {
+    wx.showLoading({ title: '加载中...', mask: true });
+    wx.cloud
+      .callFunction({
+        name: 'pagination',
+        data: {
+          dbName: 'idiom',
+          currPage: curr + 1,
+          pageSize: 1
+        }
+      })
+      .then(res => {
+        const list = res.result.data[0];
+        if (res.result.data.length == 0) {
+          this.getIdiom(curr - 1);
+          wx.showToast({
+            title: '恭喜已通关',
+            icon: 'success',
+            duration: 2000
+          });
+        } else {
+          this.setData(
+            {
+              list: [[list.pics, list.library, list.idiom, list.paraphrase]]
+            },
+            () => {
+              this.setPassInfo();
+              wx.hideLoading();
+            }
+          );
+        }
+      })
+      .catch(() => wx.hideLoading());
   },
 
   /**
@@ -72,13 +90,12 @@ Page({
       });
     }
 
-    const { list, passIndex } = this.data;
-    let info = list[passIndex][1];
+    const { list } = this.data;
+    let info = list[0][1];
     info = info.split('').sort(() => {
       /* 随机打乱 */
       return Math.random() > 0.5 ? -1 : 1;
     });
-
     this.setData({
       selected: selectedArr,
       selectList: info,
@@ -123,12 +140,12 @@ Page({
       });
       return;
     }
-    let { selectList, list, passIndex, selected } = this.data;
+    let { selectList, list, selected } = this.data;
     /* 当前错误项 */
     let errIndex = this.findIndex();
     /* 正确项位置 */
     let selectIndex = selectList.findIndex((item, index) => {
-      if (item == list[passIndex][2].charAt(errIndex)) {
+      if (item == list[0][2].charAt(errIndex)) {
         return index;
       }
     });
@@ -153,13 +170,13 @@ Page({
         this.verify();
       }
     );
-    this.changeUser((this.data.gold -= 10), this.data.passIndex);
+    this.changeUser(this.data.gold, this.data.passIndex);
   },
 
   /* 查找错误位置 */
   findIndex() {
-    const { list, passIndex, selected } = this.data;
-    let result = list[passIndex][2];
+    const { list, selected } = this.data;
+    let result = list[0][2];
     let index = -1;
     for (let i = 0; i < selected.length; i++) {
       if (selected[i].txt != result.charAt(i)) {
@@ -173,10 +190,10 @@ Page({
   /* 答案校验 */
   verify() {
     if (this.findIndex() < 0) {
-      const { gold, list, passIndex } = this.data;
-      let data = list[passIndex];
+      const { gold, list } = this.data;
+      let data = list[0];
       this.setData({
-        gold: gold + 5,
+        gold: gold + 2,
         isError: false
       });
       wx.showModal({
@@ -227,23 +244,15 @@ Page({
 
   /* 下一关 */
   nextPass() {
-    let { list, passIndex } = this.data;
-    if (list.length - 1 <= passIndex) {
-      wx.showToast({
-        title: '恭喜已通关',
-        icon: 'success',
-        duration: 2000
-      });
-    } else {
-      this.setData(
-        {
-          passIndex: (passIndex += 1)
-        },
-        () => {
-          this.setPassInfo();
-        }
-      );
-    }
+    let { passIndex } = this.data;
+    this.setData(
+      {
+        passIndex: (passIndex += 1)
+      },
+      () => {
+        this.getIdiom(passIndex);
+      }
+    );
   },
 
   /* 重新选择 */
@@ -312,5 +321,26 @@ Page({
         },
         fail: err => console.error('[数据库] [查询记录] 失败：', err)
       });
+  },
+
+  // 重玩游戏
+  resetPlay() {
+    wx.showModal({
+      title: '提示',
+      content: '数据清零，重新开始',
+      confirmText: '重玩',
+      success: () => {
+        this.changeUser(20, 0);
+        this.setData(
+          {
+            gold: 20,
+            passIndex: 0
+          },
+          () => {
+            this.getIdiom(0);
+          }
+        );
+      }
+    });
   }
 });

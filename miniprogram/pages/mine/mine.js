@@ -5,7 +5,8 @@ Page({
    */
   data: {
     authorizeStatus: true,
-    showUser: false
+    showUser: false,
+    openid: wx.getStorageSync('openid')
   },
 
   /**
