@@ -52,7 +52,7 @@ Page({
         } else {
           this.setData(
             {
-              list: [[list.pics, list.library, list.idiom, list.paraphrase]]
+              list: [list.pics, list.library, list.idiom, list.paraphrase]
             },
             () => {
               this.setPassInfo();
@@ -91,7 +91,7 @@ Page({
     }
 
     const { list } = this.data;
-    let info = list[0][1];
+    let info = list[1];
     info = info.split('').sort(() => {
       /* 随机打乱 */
       return Math.random() > 0.5 ? -1 : 1;
@@ -144,11 +144,10 @@ Page({
     /* 当前错误项 */
     let errIndex = this.findIndex();
     /* 正确项位置 */
-    let selectIndex = selectList.findIndex((item, index) => {
-      if (item == list[0][2].charAt(errIndex)) {
-        return index;
-      }
+    let index = selectList.findIndex((item, index) => {
+      if (item === list[2][errIndex]) return index;
     });
+    let selectIndex = index == -1 ? 0 : index;
     /* 当前错误项上已经存在已选值，则将已选值放回选择列表中 */
     if (selected[errIndex].index >= 0) {
       this.setData({
@@ -176,7 +175,7 @@ Page({
   /* 查找错误位置 */
   findIndex() {
     const { list, selected } = this.data;
-    let result = list[0][2];
+    let result = list[2];
     let index = -1;
     for (let i = 0; i < selected.length; i++) {
       if (selected[i].txt != result.charAt(i)) {
@@ -191,7 +190,7 @@ Page({
   verify() {
     if (this.findIndex() < 0) {
       const { gold, list } = this.data;
-      let data = list[0];
+      let data = list;
       this.setData({
         gold: gold + 2,
         isError: false
@@ -306,9 +305,9 @@ Page({
                   gold,
                   checkpoint
                 },
-                success: res => {
+                success: () => {
                   // 更新数据成功
-                  console.log(res);
+                  // console.log(res);
                 },
                 fail: err => {
                   // 更新数据失败
