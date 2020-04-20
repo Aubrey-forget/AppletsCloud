@@ -10,7 +10,7 @@ Page({
     let formData = e.detail.value;
     console.log('form发生了submit事件，携带数据为：', formData);
     wx.cloud.callFunction({
-      name: 'pay',
+      name: 'payment',
       data: {
         orderid: '' + formData.orderid,
         money: formData.money
