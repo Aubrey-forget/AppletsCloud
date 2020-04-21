@@ -53,8 +53,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/pay/pay",
-					"pathName": "pages/pay/pay",
+					"name": "pages/getMobile/getMobile",
+					"pathName": "pages/getMobile/getMobile",
 					"query": "",
 					"scene": null
 				}

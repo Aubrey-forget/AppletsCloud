@@ -1,0 +1,6 @@
+<!--miniprogram/pages/getMobile/getMobile.wxml-->
+
+<button class="gettel"
+        open-type="getPhoneNumber"
+        bindgetphonenumber="getPhoneNumber"> 快捷获取</button>
+{{mobile}}

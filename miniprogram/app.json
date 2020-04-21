@@ -7,7 +7,8 @@
     "pages/reward/index",
     "pages/idiom/index",
     "pages/admin/idiomUpload/index",
-    "pages/pay/pay"
+    "pages/pay/pay",
+    "pages/getMobile/getMobile"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
