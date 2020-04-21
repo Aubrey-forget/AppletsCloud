@@ -1,0 +1,7 @@
+<!--miniprogram/pages/push/push.wxml-->
+<form report-submit="true"
+      bindsubmit="getFormid">
+    <button form-type="submit">获取formId</button>
+</form>
+<view>formid: {{ formid }}</view>
+<button bindtap="sendMsg">云开发发送模板消息</button>
